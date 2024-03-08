@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animated Site</title>
+<style>
+    body {
+        background-color: black;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .frame {
+        border: 5px solid white;
+        border-radius: 20px;
+        padding: 20px;
+        text-align: center;
+        position: relative;
+    }
+    .button {
+        background-color: purple;
+        color: white;
+        padding: 10px 20px;
+        border: 2px solid transparent;
+        border-radius: 5px;
+        transition: background-color 0.3s, opacity 0.3s, filter 0.3s;
+    }
+    .button:hover {
+        filter: brightness(103%);
+        border-color: white;
+    }
+</style>
+</head>
+<body>
+<div class="frame">
+    <img src="box.png" id="boxImage" alt="Box Image">
+    <button class="button" id="openButton" onclick="openBox()">Open</button>
+</div>
+
+<script>
+    function openBox() {
+        var boxImage = document.getElementById("boxImage");
+        var openButton = document.getElementById("openButton");
+
+        boxImage.src = "box_opened.png";
+        openButton.style.display = "none";
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+        setInterval(function() {
+            var dot = document.createElement("div");
+            dot.classList.add("dot");
+            dot.style.position = "absolute";
+            dot.style.width = "5px";
+            dot.style.height = "5px";
+            dot.style.background = "white";
+            dot.style.borderRadius = "50%";
+            dot.style.left = Math.random() * window.innerWidth + "px";
+            dot.style.top = Math.random() * window.innerHeight + "px";
+            document.body.appendChild(dot);
+            setTimeout(function() {
+                document.body.removeChild(dot);
+            }, 3000);
+        }, 100);
+
+        var button = document.getElementById("openButton");
+        button.addEventListener("mouseover", function() {
+            button.style.filter = "brightness(103%)";
+        });
+
+        button.addEventListener("mouseout", function() {
+            button.style.filter = "brightness(100%)";
+        });
+    });
+</script>
+</body>
+</html>
