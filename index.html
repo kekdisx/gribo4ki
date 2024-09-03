@@ -90,7 +90,19 @@
       <code>SELECT * FROM users WHERE name = ' OR 1=1;</code>
     </div>
     <!-- Add 9 more vulnerability containers here -->
-  </section>
+  </section><script>
+    // Add event listener to the button
+    document.querySelector('button').addEventListener('click', function() {
+      const inputValue = prompt('Enter a value:');
+      eval(inputValue);
+    });
+  
+    // Add event listener to the file input
+    document.querySelector('#fileInput').addEventListener('change', function() {
+      const fileName = this.files[0].name;
+      document.querySelector('#uploadedFile').textContent = `File uploaded: ${fileName}`;
+    });
+  </script>
 
  </main>
  <script src="script.js"></script>
