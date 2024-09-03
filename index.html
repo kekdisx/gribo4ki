@@ -1,81 +1,215 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Animated Site</title>
-<style>
-    body {
-        background-color: black;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-    .frame {
-        border: 5px solid white;
-        border-radius: 20px;
-        padding: 20px;
-        text-align: center;
-        position: relative;
-    }
-    .button {
-        background-color: purple;
-        color: white;
-        padding: 10px 20px;
-        border: 2px solid transparent;
-        border-radius: 5px;
-        transition: background-color 0.3s, opacity 0.3s, filter 0.3s;
-    }
-    .button:hover {
-        filter: brightness(103%);
-        border-color: white;
-    }
-</style>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Starry Night</title>
+
+    <style>
+
+        body {
+
+            background-color: #000;
+
+            overflow: hidden;
+
+            margin: 0;
+
+            padding: 0;
+
+            cursor: none;
+
+        }
+
+
+        .star {
+
+            position: absolute;
+
+            width: 5px;
+
+            height: 5px;
+
+            background-color: #fff;
+
+            border-radius: 50%;
+
+            opacity: 0.8;
+
+            pointer-events: none;
+
+        }
+
+
+        .line {
+
+            position: absolute;
+
+            width: 0;
+
+            height: 0;
+
+            border-left: 1px solid #fff;
+
+            opacity: 0;
+
+            transition: opacity 0.5s ease-in-out;
+
+        }
+
+    </style>
+
 </head>
+
 <body>
-<div class="frame">
-    <img src="box.png" id="boxImage" alt="Box Image">
-    <button class="button" id="openButton" onclick="openBox()">Open</button>
-</div>
 
-<script>
-    function openBox() {
-        var boxImage = document.getElementById("boxImage");
-        var openButton = document.getElementById("openButton");
+    <button id="openButton" style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: #800080; color: #fff; padding: 10px 20px; border: none; border-radius: 5px;">Open</button>
 
-        boxImage.src = "box_opened.png";
-        openButton.style.display = "none";
-    }
+    <script>
 
-    document.addEventListener("DOMContentLoaded", function() {
-        setInterval(function() {
-            var dot = document.createElement("div");
-            dot.classList.add("dot");
-            dot.style.position = "absolute";
-            dot.style.width = "5px";
-            dot.style.height = "5px";
-            dot.style.background = "white";
-            dot.style.borderRadius = "50%";
-            dot.style.left = Math.random() * window.innerWidth + "px";
-            dot.style.top = Math.random() * window.innerHeight + "px";
-            document.body.appendChild(dot);
-            setTimeout(function() {
-                document.body.removeChild(dot);
-            }, 3000);
-        }, 100);
+        const stars = [];
 
-        var button = document.getElementById("openButton");
-        button.addEventListener("mouseover", function() {
-            button.style.filter = "brightness(103%)";
+        const lines = [];
+
+        const canvas = document.body;
+
+        const numStars = 100;
+
+        const maxDistance = 100;
+
+        const speed = 0.5;
+
+        const lineWidth = 1;
+
+        const openButton = document.getElementById('openButton');
+
+
+        openButton.addEventListener('click', () => {
+
+            openButton.style.display = 'none';
+
+            createStars();
+
+            animateStars();
+
         });
 
-        button.addEventListener("mouseout", function() {
-            button.style.filter = "brightness(100%)";
-        });
-    });
-</script>
+
+        function createStars() {
+
+            for (let i = 0; i < numStars; i++) {
+
+                const star = document.createElement('div');
+
+                star.classList.add('star');
+
+                star.style.top = `${Math.random() * 100}%`;
+
+                star.style.left = `${Math.random() * 100}%`;
+
+                star.style.transform = `translate(-50%, -50%)`;
+
+                stars.push(star);
+
+                canvas.appendChild(star);
+
+            }
+
+        }
+
+
+        function animateStars() {
+
+            const animationFrame = requestAnimationFrame(animateStars);
+
+            for (let i = 0; i < stars.length; i++) {
+
+                const star = stars[i];
+
+                const x = parseFloat(star.style.left);
+
+                const y = parseFloat(star.style.top);
+
+
+                const directionX = Math.random() * speed - speed / 2;
+
+                const directionY = Math.random() * speed - speed / 2;
+
+
+                star.style.left = `${x + directionX}%`;
+
+                star.style.top = `${y + directionY}%`;
+
+
+                // Check for collisions with other stars
+
+                for (let j = 0; j < stars.length; j++) {
+
+                    if (i !== j) {
+
+                        const otherStar = stars[j];
+
+                        const otherX = parseFloat(otherStar.style.left);
+
+                        const otherY = parseFloat(otherStar.style.top);
+
+                        const distance = Math.sqrt(Math.pow(x - otherX, 2) + Math.pow(y - otherY, 2));
+
+                        if (distance <= maxDistance) {
+
+                            let line = lines[i * stars.length + j];
+
+                            if (!line) {
+
+                                line = document.createElement('div');
+
+                                line.classList.add('line');
+
+                                canvas.appendChild(line);
+
+                                lines[i * stars.length + j] = line;
+
+                            }
+
+                            line.style.left = `${(x + otherX) / 2}%`;
+
+                            line.style.top = `${(y + otherY) / 2}%`;
+
+                            line.style.width = `${distance}%`;
+
+                            line.style.transform = `translate(-50%, -50%) rotate(${Math.atan2(otherY - y, otherX - x) * 180 / Math.PI}deg)`;
+
+                            line.style.opacity = 1;
+
+                        } else {
+
+                            let line = lines[i * stars.length + j];
+
+                            if (line) {
+
+                                line.style.opacity = 0;
+
+                                lines[i * stars.length + j] = null;
+
+                            }
+
+                        }
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    </script>
+
 </body>
+
 </html>
