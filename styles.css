@@ -2,96 +2,62 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-   }
-   
-   header {
+  }
+  
+  header {
     background-color: #333;
     color: #fff;
-    padding: 20px;
-    text-align: center;
-   }
-   
-   header h1 {
-    margin: 0;
-   }
-   
-   nav {
-    background-color: #444;
     padding: 10px;
-    text-align: center;
-   }
-   
-   nav ul {
-    list-style: none;
+  }
+  
+  header h1 {
+    margin: 0;
+  }
+  
+  nav ul {
+    list-style-type: none;
     margin: 0;
     padding: 0;
-   }
-   
-   nav li {
-    display: inline-block;
-    margin-right: 20px;
-   }
-   
-   nav a {
+    display: flex;
+  }
+  
+  nav ul li {
+    margin-right: 10px;
+  }
+  
+  nav ul li a {
     color: #fff;
     text-decoration: none;
-   }
-   
-   main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  }
+  
+  main {
     padding: 20px;
-   }
-   
-   section {
-    background-color: #f7f7f7;
-    padding: 20px;
+  }
+  
+  section {
     margin-bottom: 20px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-   }
-   
-   h2 {
-    margin-top: 0;
-   }
-   
-   button {
-    background-color: #333;
+  }
+  
+  section h2 {
+    color: #333;
+  }
+  
+  section p {
+    line-height: 1.5;
+  }
+  
+  button {
+    background-color: #4CAF50;
     color: #fff;
     border: none;
     padding: 10px 20px;
-    font-size: 16px;
     cursor: pointer;
-   }
-   
-   button:hover {
-    background-color: #444;
-   }
-   
-   #home {
-    background-image: linear-gradient(to bottom, #f7f7f7, #fff);
-   }
-   
-   #about {
-    background-image: linear-gradient(to bottom, #fff, #f7f7f7);
-   }
-   
-   #vulnerabilities {
-    background-image: linear-gradient(to bottom, #f7f7f7, #fff);
-   }
-   
-   #vulnerabilities ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-   }
-   
-   #vulnerabilities li {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
   }
   
-  #vulnerabilities li:last-child {
-    border-bottom: none;
+  button:hover {
+    background-color: #45a049;
   }
-   
+  
+  input[type="file"] {
+    margin-bottom: 10px;
+  }

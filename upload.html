@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>Upload Page</title>
+</head>
+<body>
+    Virus upload
+    <form action="upload.php" method="post" enctype="multipart/form-data">
+        Select a file: <input type="file" name="file"><br>
+        <input type="submit" value="Upload">
+        <input type="hidden" name="MAX_FILE_SIZE" value="1000000"> <!-- Maximum file size in bytes -->
+        <input type="hidden" name=" virus_type" value="malicious"> <!-- Virus type -->
+    </form>
+    <p>Note: Virus files should be in the format of.txt or.zip.</p>
+    <p>Please upload a virus file that is less than 1MB in size.</p>
+    <p>After uploading, the file will be scanned by our server to detect any potential malicious content.</p>
+    <p>If the file is found to contain malicious content, it will be deleted. Otherwise, it will be kept.</p>
+    <p>If you have any questions, please contact our support team at +79776691140.</p>
+    <p>Thank you for using our service!</p>
+</body>

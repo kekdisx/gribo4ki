@@ -73,7 +73,11 @@
        .then(data => uploadedFile.textContent = `File uploaded: ${data}`);
     }  // загрузка файла с кнопки uploadFile() и вывод имени загруженного файла в uploadedFile.textContent.js это пример, но на самом деле на сервере нужно сохранять загруженный файл в какой-то удобный для вас место.
   </script>
- 
+  <!-- создать страницу /upload для загрузки вреданосного кода -->
+   <form action="/upload" method="POST" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">Загрузить</button>
+   </form>
  </div>
  </section>
  </main>

@@ -1,30 +1,10 @@
-// Добавляем анимацию к разделам
-const sections = document.querySelectorAll('section');
-sections.forEach((section) => {
- section.classList.add('animate');
-});
-
-// Добавляем обработчик события к кнопке
-const button = document.createElement('button');
-button.textContent = 'Кликни меня!';
-button.onclick = () => {
- alert('Вы кликнули кнопку!');
-};
-document.body.appendChild(button);
-
-// Создаем уязвимость: хранение пароля в локальном хранилище
-const passwordInput = document.createElement('input');
-passwordInput.type = 'password';
-passwordInput.placeholder = 'Введите пароль';
-passwordInput.oninput = () => {
- localStorage.setItem('password', passwordInput.value);
-};
-document.body.appendChild(passwordInput);
-
-// Создаем уязвимость: выполнение кода из строки
-const codeInput = document.createElement('input');
-codeInput.placeholder = 'Введите код';
-codeInput.oninput = () => {
- eval(codeInput.value);
-};
-document.body.appendChild(codeInput);
+// Add event listener to the button
+document.querySelector('button').addEventListener('click', function() {
+    alert('Вы кликнули кнопку!');
+  });
+  
+  // Add event listener to the file input
+  document.querySelector('#fileInput').addEventListener('change', function() {
+    const fileName = this.files[0].name;
+    document.querySelector('#uploadedFile').textContent = `File uploaded: ${fileName}`;
+  });
