@@ -1,6 +1,7 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
    }
    
    header {
@@ -8,6 +9,32 @@ body {
     color: #fff;
     padding: 20px;
     text-align: center;
+   }
+   
+   header h1 {
+    margin: 0;
+   }
+   
+   nav {
+    background-color: #444;
+    padding: 10px;
+    text-align: center;
+   }
+   
+   nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+   }
+   
+   nav li {
+    display: inline-block;
+    margin-right: 20px;
+   }
+   
+   nav a {
+    color: #fff;
+    text-decoration: none;
    }
    
    main {
@@ -18,36 +45,53 @@ body {
    }
    
    section {
-    background-color: #fff;
+    background-color: #f7f7f7;
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
    }
    
-   h1, h2 {
-    color: #333;
+   h2 {
+    margin-top: 0;
+   }
+   
+   button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+   }
+   
+   button:hover {
+    background-color: #444;
    }
    
    #home {
-    background-image: linear-gradient(to bottom, #f0f0f0, #fff);
+    background-image: linear-gradient(to bottom, #f7f7f7, #fff);
    }
    
    #about {
-    background-image: linear-gradient(to bottom, #fff, #f0f0f0);
+    background-image: linear-gradient(to bottom, #fff, #f7f7f7);
    }
    
-   .animate {
-    animation: animate 2s infinite;
+   #vulnerabilities {
+    background-image: linear-gradient(to bottom, #f7f7f7, #fff);
    }
    
-   @keyframes animate {
-    0% {
-    transform: scale(1);
-    }
-    50% {
-    transform: scale(1.1);
-    }
-    100% {
-    transform: scale(1);
-    }
+   #vulnerabilities ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
    }
+   
+   #vulnerabilities li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  #vulnerabilities li:last-child {
+    border-bottom: none;
+  }
+   

@@ -9,15 +9,50 @@
 <body>
  <header>
  <h1>Уязвимый сайт</h1>
+ <nav>
+ <ul>
+ <li><a href="#home">Главная</a></li>
+ <li><a href="#about">О нас</a></li>
+ <li><a href="#vulnerabilities">Уязвимости</a></li>
+ </ul>
+ </nav>
  </header>
  <main>
  <section id="home">
  <h2>Добро пожаловать!</h2>
  <p>Этот сайт содержит уязвимости.</p>
+ <button>Узнать больше</button>
  </section>
  <section id="about">
  <h2>О нас</h2>
  <p>Мы создали этот сайт для образовательных целей.</p>
+ </section>
+ <section id="vulnerabilities">
+ <h2>Уязвимости</h2>
+ <p>На этом сайте есть несколько уязвимостей, которые можно использовать для демонстрации атак.</p>
+ <ul>
+ <li><a href="#sql-injection">SQL-инъекция</a></li>
+ <li><a href="#xss">XSS</a></li>
+ <li><a href="#csrf">CSRF</a></li>
+ </ul>
+ <div id="sql-injection">
+ <h3>SQL-инъекция</h3>
+ <p>SQL-инъекция - это атака, при которой злоумышленник вводит вредоносный SQL-код в форму ввода данных.</p>
+ <p>Пример:</p>
+ <code>SELECT * FROM users WHERE name = ' OR 1=1;</code>
+ </div>
+ <div id="xss">
+ <h3>XSS</h3>
+ <p>XSS (Cross-Site Scripting) - это атака, при которой злоумышленник вводит вредоносный JavaScript-код в форму ввода данных.</p>
+ <p>Пример:</p>
+ <code>alert('XSS')</code>
+ </div>
+ <div id="csrf">
+ <h3>CSRF</h3>
+ <p>CSRF (Cross-Site Request Forgery) - это атака, при которой злоумышленник заставляет пользователя выполнить действие на сайте без его согласия.</p>
+ <p>Пример:</p>
+ <code>img src="https://example.com/delete-account" /></code>
+ </div>
  </section>
  </main>
  <script src="script.js"></script>
