@@ -61,3 +61,22 @@ body {
   input[type="file"] {
     margin-bottom: 10px;
   }
+
+/* Add your styles here */
+.vuln-container {
+    margin-bottom: 20px;
+  }
+  
+  .vuln-container h3 {
+    color: #333;
+  }
+  
+  .vuln-container p {
+    line-height: 1.5;
+  }
+  
+  .vuln-container code {
+    background-color: #f5f5f5;
+    padding: 2px 5px;
+    display: inline-block;
+  }
