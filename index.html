@@ -51,7 +51,20 @@
  <h3>CSRF</h3>
  <p>CSRF (Cross-Site Request Forgery) - это атака, при которой злоумышленник заставляет пользователя выполнить действие на сайте без его согласия.</p>
  <p>Пример:</p>
- <code>img src="https://example.com/delete-account" /></code>
+ <code>POST /delete_user?id=123 HTTP/1.1</code>
+ </div>
+ <button onclick="showVulnerabilities()">Показать все уязвимости</button>
+ 
+ <script>
+    function showVulnerabilities() {
+      const vulnerabilities = document.querySelectorAll('div[id^="vulnerability"]');
+      vulnerabilities.forEach(vulnerability => vulnerability.style.display = 'block');
+    }
+    
+    showVulnerabilities(); // Показываем все уязвимости при загрузке страницы.
+ 
+ </script>
+ 
  </div>
  </section>
  </main>

@@ -28,16 +28,3 @@ codeInput.oninput = () => {
  eval(codeInput.value);
 };
 document.body.appendChild(codeInput);
-
-// Создаем уязвимость: выполнение JavaScript из файла
-const scriptInput = document.createElement('input');
-scriptInput.type = 'file';
-scriptInput.accept = '.js';
-scriptInput.onchange = () => {
- const file = scriptInput.files[0];
- const reader = new FileReader();
- reader.onload = () => {
- eval(reader.result);
- };
- reader.readAsText(file);
-};
