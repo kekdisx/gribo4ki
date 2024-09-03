@@ -53,17 +53,26 @@
  <p>Пример:</p>
  <code>POST /delete_user?id=123 HTTP/1.1</code>
  </div>
- <button onclick="showVulnerabilities()">Показать все уязвимости</button>
- 
- <script>
-    function showVulnerabilities() {
-      const vulnerabilities = document.querySelectorAll('div[id^="vulnerability"]');
-      vulnerabilities.forEach(vulnerability => vulnerability.style.display = 'block');
-    }
-    
-    showVulnerabilities(); // Показываем все уязвимости при загрузке страницы.
- 
- </script>
+ <!-- кнопка выбора файлов .js которые моментально исполнятся на сервере если загрузить -->
+  <input type="file" id="fileInput" />
+  <button onclick="uploadFile()">Загрузить</button> 
+  <div id="uploadedFile"></div>
+  <script>
+    function uploadFile() {
+      const fileInput = document.getElementById('fileInput');
+      const uploadedFile = document.getElementById('uploadedFile');
+
+      const formData = new FormData();
+      formData.append('file', fileInput.files[0]);
+
+      fetch('/upload', {
+        method: 'POST',
+        body: formData
+      })
+       .then(response => response.text())
+       .then(data => uploadedFile.textContent = `File uploaded: ${data}`);
+    }  // загрузка файла с кнопки uploadFile() и вывод имени загруженного файла в uploadedFile.textContent.js это пример, но на самом деле на сервере нужно сохранять загруженный файл в какой-то удобный для вас место.
+  </script>
  
  </div>
  </section>
